@@ -2,6 +2,9 @@
 	<li>
 		<a href="index.php?content=homepage">Home</a>
 	</li>
+	<li>
+		<a href="index.php?content=class/MySqlDatabaseClass">class test</a>
+	</li>
 
 <?php   
     if (isset ($_SESSION['userrole']))

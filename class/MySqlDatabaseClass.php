@@ -24,13 +24,45 @@
 		or die ('MySqlDatabaseClass, database niet geselecteerd');
     	
 		
-    }		
+    }
+	// Deze functie als argument een query mee.
+	// Deze wordt door de mysql_query($query)
+	public function fire_query($query)
+	{
 		
-		
-		
-		
-		
+		$result = mysql_query($query) or die ('MySqlDatabase: '.mysql_error());
+		return $result;
+	}
+    
 		
     }
+    // Maak nu een instantie van de net gedefinieerde class.
+    $database = new MySqlDatabaseClass();
+	
+	$query = "SELECT * FROM `login`";
+	
+	//$Database.fire_query($query); zo zou je het moeten doen met C#
+	
+	$result = $database ->fire_query($query);
+	
+?>
+<h3> Dit is de databasetestpagina </h3><hr>
+<?php
+   while ($record = mysql_fetch_array($result))
+   {
+   	 echo $record[ 'email' ]. "<br>";
+   }
 
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
