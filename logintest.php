@@ -5,13 +5,10 @@
 
      // Include de LoginClass 
      require_once('class/LoginClass.php');
-
-
-     $loginClassObj = new LoginClass();
 	 
-	 $query = "SELECT * FROM `login`";
-	 
-	$result_array = $loginClassObj -> find_by_sql($query);
+	 // Dit heeft als voordeel dat we de method kunnen aanroepen zonder eerst een object te 
+	 // hoeven te maken van de Class LoginClass.
+	$result_array =  LoginClass::select_all_from_login();
 	
 	echo "<table>
 	<tr>
@@ -22,6 +19,7 @@
 	<th>activated</th>
 	<th>activationdate</th>
 	</tr>";
+	
 	foreach ( $result_array as $value)
 	
 	{
@@ -38,4 +36,5 @@
 
 
 ?>
-
+Bestaat het e-mailadres developer@gmail.com?<br>
+<?php echo LoginClass::email_exist("developer@gmail.com"); ?>

@@ -27,7 +27,7 @@
 			
 			
 		}
-		public function find_by_sql($query)
+		public static function find_by_sql($query)
 		{
 				
 			// Met global maak je het database-object uit de MySqlDatabaseClass 
@@ -64,11 +64,32 @@
 			}
 			return $object_array;
 		}
+        // Deze method selecteert alle records uit de login table. We maken
+        // gebruik van de find_by_sql($query) method uit deze class.
+		public static function select_all_from_login()
+		{
+			$query = "SELECT * FROM `login`";	
+			$result = self ::find_by_sql($query);
+			return $result;
+		}
 		
+		public static function email_exist($emailaddress)
+		{
+			global $database;
+			$query = "SELECT * FROM `login` WHERE `email ` = '".$emailaddress."'";
+			
+			$result = $database -> fire_query($query);
+			if (mysql_num_rows($result)> 0)
+			{
+				return "Het e-mailadres bestaat al in de database";
+			}
+			else 
+			{
+				return "Het e-mailadres bestaat niet in de database";
+			}
+			
+		}
 	}
-
-
-
 
 
 
