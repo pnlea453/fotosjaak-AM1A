@@ -39,21 +39,6 @@
     // Maak nu een instantie van de net gedefinieerde class.
     $database = new MySqlDatabaseClass();
 	
-	$query = "SELECT * FROM `login`";
-	
-	//$Database.fire_query($query); zo zou je het moeten doen met C#
-	
-	$result = $database ->fire_query($query);
-	
-?>
-<h3> Dit is de databasetestpagina </h3><hr>
-<?php
-   while ($record = mysql_fetch_array($result))
-   {
-   	 echo $record[ 'email' ]. "<br>";
-   }
-
-?>
 
 
 
