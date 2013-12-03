@@ -2,7 +2,7 @@
 
 
 <?php
-<table class='simple'>
+
      // Include de LoginClass 
      require_once('class/LoginClass.php');
 
@@ -13,19 +13,28 @@
 	 
 	$result_array = $loginClassObj -> find_by_sql($query);
 	
+	echo "<table>
+	<tr>
+	<th>id</th>
+	<th>email</th>
+	<th>passwoord</th>
+	<th>userrole</th>
+	<th>activated</th>
+	<th>activationdate</th>
+	</tr>";
 	foreach ( $result_array as $value)
 	
 	{
-		
-		echo $value ->get_id()."<br>";
-		echo $value ->get_email()."<br>";
-		echo $value ->get_password()."<br>";
-		echo $value ->get_userrole()."<br>";
-		echo $value ->get_activated()."<br>";
-		echo $value ->get_activationdate()."<br>";
-		
+		echo "<tr>
+		<td>".$value ->get_id()."</td>
+		<td>".$value ->get_email()."</td>
+		<td>".$value ->get_password()."</td>
+		<td>".$value ->get_userrole()."</td>
+		<td>".$value ->get_activated()."</td>
+		<td>".$value ->get_activationdate()."</td>
+		</tr>";
 	}
-
+    echo "</table>";
 
 
 ?>
