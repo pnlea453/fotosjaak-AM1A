@@ -12,20 +12,18 @@
 		if (LoginClass::check_if_email_password_exists($_POST['email'], 
 		                                               $_POST['password']))
 		{
-			//echo "De combinatie bestaat";exit();
-			//Verwijs door naar de homepage van de geregistreerde gebruiker
-			//echo "Record bestaat in de database, U wordt doorgestuurd naar de downloadpage.";
+			// Roep de static method find_user_by_email_password aan uit de
+			// de LoginClass. Deze method geeft precies 1 LoginClass-object 
+			// terug. Je kunt via dit object de properties opvragen zoals:
+			// get_id(), get_email(), get_password, enzz ..........
 			$user_object = LoginClass ::find_user_by_email_password($_POST['email'], $_POST['password']);
 			
-			echo $user_object->get_id(); exit();
+		     
+			$_SESSION['id'] = $user_object->get_id(); 
+			$_SESSION['userrole'] = $user_object->get_userrole(); 
 			
 			
-			$record = mysql_fetch_array($result);
-			$_SESSION['id'] = $record['id']; 
-			$_SESSION['userrole'] = $record['userrole'];
-			
-			
-			switch($record['userrole'])
+			switch($_SESSION['userrole'])
 			{
 			case 'root':
 			header ("location:index.php?content=root_homepage");
