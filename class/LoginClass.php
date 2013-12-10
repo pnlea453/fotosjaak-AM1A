@@ -106,9 +106,9 @@
 				return false;
 			}
 		}
-       public static function find_user_by_email_password($wmail, $password)
+       public static function find_user_by_email_password($email, $password)
 	   {
-	   	 $query = "SELECT * FROM `login` WHERE `email` = '".$emailaddress."'";
+	   	 $query = "SELECT * FROM `login` WHERE `email` = '".$email."' AND `password` = '".$password."'";
 		 $logClassObjectInArray = self::find_by_sql($query);
 		 $loginClassObject = array_shift($logClassObjectInArray);
 		 return $loginClassObject;
