@@ -16,10 +16,16 @@
 		if (LoginClass::check_if_email_password_exists($_POST['email'], 
 		                                               $_POST['password']))
 		{
+			/* Check nu duidelijk is dat de combinatie van email en password bestaat
+			 * of het account wel geactiveerd is.
+			 */
+			if (LoginClass::check_if_account_is_activated($_POST['email'], $_POST['password']))
+			{
 			// Roep de static method find_user_by_email_password aan uit de
 			// de LoginClass. Deze method geeft precies 1 LoginClass-object 
 			// terug. Je kunt via dit object de properties opvragen zoals:
 			// get_id(), get_email(), get_password, enzz ..........
+			//
 			// Geef dit object vervolgens mee aan de method login($userObject)
 			// uit de SessionClass.
 			$session->
@@ -44,7 +50,13 @@
 			break;
 			
 			}
-			
+		}
+        else
+        {
+	     echo "Uw account is nog niet door u geactiveerd. Check uw <br>
+	     email voor het klikken op de activatielink";
+		 header("refresh:4; url=index.php?content=homepage");
+        }
 		}
 		else
 		{
