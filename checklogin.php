@@ -3,6 +3,10 @@
     // Moet je deze eerst toevoegen met :
      require_once('class/LoginClass.php');
 	 
+	// om de methode uit de SessionClass te gebruiken
+    // Moet je deze eerst toevoegen met :
+	 require_once ('class/SessionClass.php');
+	 
 	
 	//Check of beide velden zijn ingevoerd
 	if( !empty($_POST['email']) && !empty($_POST['password']))
@@ -16,12 +20,10 @@
 			// de LoginClass. Deze method geeft precies 1 LoginClass-object 
 			// terug. Je kunt via dit object de properties opvragen zoals:
 			// get_id(), get_email(), get_password, enzz ..........
-			$user_object = LoginClass ::find_user_by_email_password($_POST['email'], $_POST['password']);
-			
-		     
-			$_SESSION['id'] = $user_object->get_id(); 
-			$_SESSION['userrole'] = $user_object->get_userrole(); 
-			
+			// Geef dit object vervolgens mee aan de method login($userObject)
+			// uit de SessionClass.
+			$session->
+			login($user_object = LoginClass ::find_user_by_email_password($_POST['email'], $_POST['password']));
 			
 			switch($_SESSION['userrole'])
 			{
