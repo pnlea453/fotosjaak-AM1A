@@ -30,11 +30,17 @@
 			case 'root':
 			header ("location:index.php?content=root_homepage");
 			break;
-			case 'admin':
+			case 'administrator':
 			header ("location:index.php?content=admin_homepage");
 			break;
 			case 'customer':
 			header ("location:index.php?content=customer_homepage");
+			break;
+			case 'developer':
+			header ("location:index.php?content=developer_homepage");
+			break;
+			case 'photographer':
+			header ("location:index.php?content=photographer_homepage");
 			break;
 			
 			}

@@ -28,6 +28,8 @@
 	
 	break;
 	case 'root':
+		echo "<li> <a href='index.php?content= developer_homepage'>dev-homepage</a>
+		</li>";
 	
 	break;
 	
