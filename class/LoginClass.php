@@ -115,6 +115,26 @@
 		 
 	   }
 	   
+	   public static function check_if_account_is_activated($email,$password)
+	   {
+	   	
+		// Maak een query die het record selecteerd van degene die inlogd
+		$query = "SELECT * FROM `login` WHERE `email` = '".$email."' AND `password` = '".$password."'";
+		
+		//Vuur de query af op de database met de static method find_by_sql($query)
+		$object_array = self ::find_by_sql($query);
+		$loginClassObject = array_shift($object_array);
+		if ( $loginClassObject ->activated == 'yes')
+		{
+			return true;
+		}
+		else {
+		{
+			return false;
+		}
+		}
+		
+	   }
 	   
 }
 
