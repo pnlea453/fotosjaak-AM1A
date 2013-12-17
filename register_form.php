@@ -23,7 +23,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="street" />
+						<input type="text" name="address" />
 					</td>
 				</tr>
 				<tr>
@@ -31,7 +31,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="housenumber" />
+						<input type="text" name="addressnumber" />
 					</td>
 				</tr>
 				<tr>
@@ -39,7 +39,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="address" />
+						<input type="text" name="city" />
 					</td>
 				</tr>
 				<tr>
@@ -51,23 +51,15 @@
 					</td>
 				</tr>
 				<tr>
-					<td>geboortedatum</td>
+					<td>land</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="date" name="date" />
+						<input type="text" name="country" />
 					</td>
 				</tr>
 				<tr>
-					<td>geslacht</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="radio" name="sex" value="male">Man<br>
-						<input type="radio" name="sex" value="female">Vrouw
-					</td>
-				</tr>
-				
+					
 				<tr>
 				</tr>
 				
@@ -79,7 +71,22 @@
 						<input type="e-mail" name="e-mail">
 					</td>
 				</tr>
-				
+				<tr>
+					<td>telefoonnummer vast</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" name="telephonenumber" />
+					</td>
+				</tr>
+				<tr>
+					<td>mobiel nummer</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" name="mobilephonenumber" />
+					</td>
+				</tr>
 				<tr>
 					<td><input type="submit" name="submit" value="verstuur" /></td>
 				</tr>
