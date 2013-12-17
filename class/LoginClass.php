@@ -163,8 +163,17 @@
 	   {
 	   		global $database;
 			
-			$query = "INSERT INTO  `login` (``)"
+			$date = date ("Y-m-d H:i:s");
+			
+			$tmp_password = $date.$post_array['email'];
+		
+			$hash_from_tmp_password = MD5($tmp_password);
+			
+			$query = "INSERT INTO  `login` (`id`,`email`,`password`,`userrole`,`activated`,`activationdate`)
+			VALUES (NULL,'".$post_array['email']."','".$hash_from_tmp_password."','customer','no','".$date."')";
 	   	
+		$database->fire_query($query);
+		
 	   }
 }
 
