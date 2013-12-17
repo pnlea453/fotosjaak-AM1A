@@ -174,6 +174,9 @@
 	   	
 		$database->fire_query($query);
 		
+		$id = mysql_insert_id();
+		
+		echo $id; exit();
 	   }
 }
 
