@@ -135,7 +135,37 @@
 		}
 		
 	   }
+	   public static function check_if_email_exists($email)
 	   
+	   {
+	   	global $database;
+		
+	   	  // Hier checken we of de email bestaat in de database 
+		  $query = "SELECT * FROM `login` WHERE `email` = '".$email."'";
+		  
+		  // vuurt hem af op de database
+	      $result = $database->fire_query($query);
+		  
+	      // telt het aantal rows
+		  if (mysql_num_rows($result) > 0)
+		  {
+		  	return true;
+		  }
+		  else
+		  {
+		  	return false;
+		  }
+		  
+		  //return (mysql_num_rows($result) > 0) ? true : false 
+	   	  
+	   }
+	   public static function insert_into_loginClass($post_array)
+	   {
+	   		global $database;
+			
+			$query = "INSERT INTO  `login` (``)"
+	   	
+	   }
 }
 
 

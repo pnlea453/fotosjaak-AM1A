@@ -68,7 +68,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="e-mail" name="e-mail">
+						<input type="email" name="email">
 					</td>
 				</tr>
 				<tr>
