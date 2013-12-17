@@ -1,6 +1,9 @@
 <?php
+require_once("MySqlDatabaseClass.php"
+);
 class UserClass
 {
+	
 	//Fields
 	private $id;
 	private $firstname;
@@ -20,7 +23,7 @@ class UserClass
 	public function getInfix() {return $this->infix;}	
 	public function getSurname() {return $this->surname;}	
 	public function getAddress() {return $this->address;}	
-	public function getAddressnumber() {return $this->addressnumver;}	
+	public function getAddressnumber() {return $this->addressnumber;}	
 	public function getCity() {return $this->city;}	
 	public function getZipcode() {return $this->zipcode;}	
 	public function getCountry() {return $this->country;}	
@@ -34,6 +37,46 @@ class UserClass
 		
 	}
 	
+	public static function find_by_sql($query)
+	{
+		global $database;
+		
+		$result = $datbase->fire_qeury($query);
+		
+		$object_array = array();
+		
+		while ($row = mysql_fetch_array($result))
+		{
+			$object = new UserClass();
+			
+			$object->id = $row['id'];
+			$object->firstname= $row['firstname'];
+			$object->infix= $row['infix'];
+			$object->surname = $row['surname'];
+			$object->address = $row['address'];
+			$object->addressnumber = $row['addressnumber'];
+			$object->city = $row['city'];
+			$object->zipcode = $row['zipcode'];
+			$object->country = $row['country'];
+			$object->telephonenumber = $row['telephonenumber'];
+			$object->mobilephonenumber = $row['mobilephonenumber'];
+			
+			$object_array[] = $object;
+			
+		}
+		return $object_array;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
 
 ?>
