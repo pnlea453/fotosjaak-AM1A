@@ -66,6 +66,39 @@ class UserClass
 		}
 		return $object_array;
 	}
+	
+	public static function insert_into_userClass($postarray, $id)
+	{
+		global $database;
+		
+		$query = "INSERT INTO `user` (`id`,
+		                              `firstname`,
+		                              `infix`,
+		                              `surname`,
+		                              `address`,
+		                              `addressnumber`,
+		                              `city`,
+		                              `zipcode`,
+		                              `country`,
+		                              `telephonenumber`,
+		                              `mobilephonenumber`)
+		        VALUES                ('".$id."',
+		                               '".$postarray['firstname']."',
+		                               '".$postarray['infix']."',
+		                               '".$postarray['surname']."',
+		                               '".$postarray['address']."',
+		                               '".$postarray['addressnumber']."',
+		                               '".$postarray['city']."',
+		                               '".$postarray['zipcode']."',
+		                               '".$postarray['country']."',
+		                               '".$postarray['telephonenumber']."',
+		                               '".$postarray['mobilephonenumber']."')";
+		                               
+	$database->fire_query($query);
+		                               
+		                               
+		
+	}
 }
 
 

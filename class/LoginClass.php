@@ -1,5 +1,6 @@
 <?php
     require_once ("MySqlDatabaseClass.php");
+	require_once("UserClass.php");
 	
 	// Hieronder de classdefinitie van de LoginClass
 	class LoginClass
@@ -176,9 +177,38 @@
 		
 		$id = mysql_insert_id();
 		
-		echo $id; exit();
+		UserClass::insert_into_userClass($post_array, $id);
+		self::send_activation_email($post_array,$hash_from_tmp_password);
+		
+	   }
+	   public static function send_activation_email($post_array, $password)
+	   {
+	   	$to = $post_array['email'];
+		$subject = "Activatie website FotoSjaak";
+		$message = "Geachte heer/mevrouw ".
+		           $post_array['firstname']." ".
+		           $post_array['infix']." ".
+		           $post_array['surname']."\r\n ".
+		           "Voor u kunt inloggen moet uw account nog worden geactiveerd.\r\n
+		           Klik hiervoor op de onderstaande link \r\n
+		           http://localhost/Blok2/fotosjaak/index.php?content=activation&email=".$post_array['email']."
+		           password=".$password."\r\n
+		           Met vriendelijk groet,\r\n
+		           Sjaak de Vries\r\n
+		           Uw fotograaf";
+				   
+				   echo $message; exit();
+		           mail ($to, $subject, $message, $headers);
+		
 	   }
 }
+
+
+
+
+
+
+
 
 
 
