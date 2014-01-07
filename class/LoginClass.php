@@ -191,13 +191,19 @@
 		           $post_array['surname']."\r\n ".
 		           "Voor u kunt inloggen moet uw account nog worden geactiveerd.\r\n
 		           Klik hiervoor op de onderstaande link \r\n
-		           http://localhost/Blok2/fotosjaak/index.php?content=activation&email=".$post_array['email']."
-		           password=".$password."\r\n
+		           http://localhost/Blok2/fotosjaak/index.php?content=activation&email=".$post_array['email']."&"."password=".$password."\r\n
 		           Met vriendelijk groet,\r\n
 		           Sjaak de Vries\r\n
 		           Uw fotograaf";
 				   
-				   echo $message; exit();
+				   //echo $message; exit();
+				   $headers = "From: info@fotosjaak.nl\r\n";
+				   $headers .="Reply-To: info@fotosjaak.nl\r\n";
+				   $headers .="Cc: sjaak@fotosjaak.nl\r\n";
+				   $headers .="Bcc: admin@fotosjaak.nl\r\n";
+				   $headers .="X-mailer: PHP/".phpversion()."\r\n";
+				   $headers .="MIME-version: 1.0\r\n";
+				   $headers .="Content-type: text/pain; charset=iso-8859-1\r\n";
 		           mail ($to, $subject, $message, $headers);
 		
 	   }
