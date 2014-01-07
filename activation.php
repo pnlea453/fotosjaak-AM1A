@@ -4,7 +4,17 @@ require_once ("class/LoginClass.php");
 if (isset($_POST['submit']))
 {
 	echo "Er is op de submitknop gedrukt!"; 
-}
+	if (!strcmp($_POST['password'], $_POST['password-check']))
+	{
+		
+	}
+	else 
+	{
+		echo "De ingevoerde wachtwoorden komen niet overeen, <br> probeer het opnieuw.
+		U wordt teruggestuurd";
+		header("refresh:5;ur;=index.php?content=activation&email=".$_POST['email']."&password=".$_POST['old_password']);
+	}
+	}
 else 
 {
 	
@@ -18,7 +28,7 @@ if (LoginClass::check_if_email_password_exists($_GET['email'],$_GET ['password']
 		<table>
 			<tr>
 				<td>nieuw wachtwoord (maximaal 12 tekens)</td>
-				<td><input type='password'name'password' size='12' maxlength='12'/></td>
+				<td><input type='password' name='password' size='12' maxlength='12'/></td>
 			</tr>
 			<tr>
 				<td>nieuw wachtwoord (check)</td>
@@ -26,7 +36,10 @@ if (LoginClass::check_if_email_password_exists($_GET['email'],$_GET ['password']
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
-				<td><input type='submit' value='vestuur' name='submit'/></td>
+				<td><input type='submit' value='vestuur' name='submit'/>
+				<input type= 'hidden' name='email' value='<?php echo $_GET['email']; ?> '/>
+				<input type= 'hidden' name='old_password' value='<?php echo $_GET['password']; ?> '/>
+				</td>
 			</tr>
 		</table>
 		
