@@ -185,15 +185,15 @@
 	   {
 	   	$to = $post_array['email'];
 		$subject = "Activatie website FotoSjaak";
-		$message = "Geachte heer/mevrouw ".
+		$message = "<p><u> Geachte heer/mevrouw <b> ".
 		           $post_array['firstname']." ".
 		           $post_array['infix']." ".
-		           $post_array['surname']."\r\n ".
-		           "Voor u kunt inloggen moet uw account nog worden geactiveerd.\r\n
-		           Klik hiervoor op de onderstaande link \r\n
-		           http://localhost/Blok2/fotosjaak/index.php?content=activation&email=".$post_array['email']."&"."password=".$password."\r\n
-		           Met vriendelijk groet,\r\n
-		           Sjaak de Vries\r\n
+		           $post_array['surname']."</\b></u></p>".
+		           "Voor u kunt inloggen moet uw account nog worden geactiveerd.<br>
+		           Klik hiervoor op de onderstaande link <br><br>
+		           <a href= 'http://localhost/Blok2/fotosjaak/index.php?content=activation&email=".$post_array['email']."&"."password=".$password."'>activeer account </a><br><br>
+		           Met vriendelijk groet,<br>
+		           Sjaak de Vries<br>
 		           Uw fotograaf";
 				   
 				   //echo $message; exit();
@@ -203,7 +203,7 @@
 				   $headers .="Bcc: admin@fotosjaak.nl\r\n";
 				   $headers .="X-mailer: PHP/".phpversion()."\r\n";
 				   $headers .="MIME-version: 1.0\r\n";
-				   $headers .="Content-type: text/pain; charset=iso-8859-1\r\n";
+				   $headers .="Content-type: text/html; charset=iso-8859-1\r\n";
 		           mail ($to, $subject, $message, $headers);
 		
 	   }
