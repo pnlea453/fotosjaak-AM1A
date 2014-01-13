@@ -207,6 +207,24 @@
 		           mail ($to, $subject, $message, $headers);
 		
 	   }
+       public static function update_password_in_login($email,$password)
+	   {
+	   	 global $database;
+		 
+		 $date = date("Y-m-d H:i:s");
+		 
+		 $query = "UPDATE `login` 
+		           SET `password`= '".$password."',
+		           `activated`= 'yes',
+		           `activationdate`= '".$date."'
+		           WHERE `email` = '".$email."'";
+		 
+		 $database->fire_query($query);
+		           		
+	   		
+	   	
+	   }
+       
 }
 
 

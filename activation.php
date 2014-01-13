@@ -6,13 +6,18 @@ if (isset($_POST['submit']))
 	echo "Er is op de submitknop gedrukt!"; 
 	if (!strcmp($_POST['password'], $_POST['password-check']))
 	{
+		//sla het nieuwe wachtwoord op, in de tabel login
+		LoginClass::update_password_in_login($_POST['email'],$_POST['password']);
+		
+		echo "Uw wachtwoord is succesvol gewijzigd. U wordt doorgestuurd naar de inlogpagina";
+		header("refresh:5;url=index.php?content=login_form");
 		
 	}
 	else 
 	{
 		echo "De ingevoerde wachtwoorden komen niet overeen, <br> probeer het opnieuw.
 		U wordt teruggestuurd";
-		header("refresh:5;ur;=index.php?content=activation&email=".$_POST['email']."&password=".$_POST['old_password']);
+		header("refresh:5;url=index.php?content=activation&email=".$_POST['email']."&password=".$_POST['old_password']);
 	}
 	}
 else 
