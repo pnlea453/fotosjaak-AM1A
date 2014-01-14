@@ -41,7 +41,13 @@
                                 <input type='date' name='eventdate' placeholder='dd-mm-yyyy' />
                         </td>                        
                 </tr>
-                
+                <tr>
+                	<td>Zwart/wit of kleur</td>
+                	<td>
+                		Kleur <input type='radio' name='color' value='color'/>
+                		Zwart/wit <input type='radio' name='color' value'black-white'/>
+                	</td>
+                </tr>
                 
                 
                 
