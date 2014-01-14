@@ -48,10 +48,18 @@
                 		Zwart/wit <input type='radio' name='color' value'black-white'/>
                 	</td>
                 </tr>
-                
-                
-                
-                
+                <tr>
+                	<td>Aantal foto's</td>
+                	<td> <input type='number' name='number_of_pictures' min='10' value='10'/>
+                	</td>
+                	
+                </tr>
+                  <tr>
+                  	<td>&nbsp;</td>
+                  	<td> ,input type='submit' name='submit' value='verstuur' /.
+                  		
+                  	</td>
+                  </tr>   
         </table>
         
         
