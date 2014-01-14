@@ -1,11 +1,31 @@
 <?php 
         $userrole = array('customer', 'root', 'admin');
         include("security.php"); 
+		
+		
+		
+		if  ( isset ($_POST['submit']))
+		{
+			//var_dump($_POST);
+			echo "uw geplaatste opdracht is correct ontvangen. U krijgt een<br>
+			bevestigingsemail toegestuurd.";
+			header("refresh:6;index.php?content=customer_homepage");
+		}
+		else 
+		{
+			
+		
 ?>
+
+
+
+
+
+
 <p>Plaats een opdracht</p>
 
 
-<form action='' method='post' >
+<form action='index.php?content=opdracht' method='post' >
         <table>
                 <tr>
                         <td>Korte omschrijving</td>
@@ -56,7 +76,7 @@
                 </tr>
                   <tr>
                   	<td>&nbsp;</td>
-                  	<td> ,input type='submit' name='submit' value='verstuur' /.
+                  	<td> <input type='submit' name='submit' value='verstuur' />
                   		
                   	</td>
                   </tr>   
@@ -65,3 +85,6 @@
         
         
 </form>
+<?php
+}
+?>
