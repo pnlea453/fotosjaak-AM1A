@@ -1,4 +1,6 @@
 <?php 
+     require_once("class/OrderClass.php");
+
         $userrole = array('customer', 'root', 'admin');
         include("security.php"); 
 		
@@ -6,6 +8,7 @@
 		
 		if  ( isset ($_POST['submit']))
 		{
+			OrderClass::insert_into_order($_POST);
 			//var_dump($_POST);
 			echo "uw geplaatste opdracht is correct ontvangen. U krijgt een<br>
 			bevestigingsemail toegestuurd.";
