@@ -18,6 +18,9 @@
 		           <a href='index.php?content=customer_homepage'>user home</a></li>";
 		 echo "<li>
 		           <a href='index.php?content=faqpage'>faq</a></li>";
+		 echo "<li>
+		           <a href='index.php?content=opdracht'>opdracht</a></li>";
+				   
 				   
 	
 	break;
