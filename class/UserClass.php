@@ -41,7 +41,7 @@ class UserClass
 	{
 		global $database;
 		
-		$result = $datbase->fire_qeury($query);
+		$result = $database->fire_query($query);
 		
 		$object_array = array();
 		
@@ -98,6 +98,17 @@ class UserClass
 		                               
 		                               
 		
+	}
+	
+	public static function find_firstname_infix_surname()
+	{
+		
+		$query = "SELECT * FROM `user` WHERE `id` = '".$_SESSION['id']."'";	
+		
+		$result = self::find_by_sql($query);
+		$user = array_shift($result);
+		//var_dump($user);exit();
+		return $user;
 	}
 }
 

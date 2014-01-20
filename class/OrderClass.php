@@ -1,5 +1,6 @@
 <?php
 require_once("class/MySqlDatabaseClass.php");
+require_once("class/UserClass.php");
 
 class OrderClass
 {
@@ -46,6 +47,7 @@ class OrderClass
 		global $database;
 		
 		$query = "INSERT INTO `order` (`order_id`,
+		                               `user_id`,
 		                               `order_short`,
 		                               `order_long`,
 		                               `deliverydate`,
@@ -53,6 +55,7 @@ class OrderClass
 		                               `color`,
 		                               `number_of_pictures`)
 		          VALUES               (null,
+		                                '".$_SESSION['id']."',
 		                                '".$post_array['order_short']."',
 		                                '".$post_array['order_long']."',
 		                                '".$post_array['deliverydate']."',
@@ -61,6 +64,34 @@ class OrderClass
 		                                '".$post_array['number_of_pictures']."')";
 		                                
 		 $database->fire_query($query);
+		 $order_id = mysql_insert_id();
+		 self::order_activation_email();
+		
+	}
+	private static function order_activation_email()
+	{
+		$user = UserClass::find_firstname_infix_surname();
+		$message = "Geachte heer/mevrouw : ".$user->getFirstname()." ".
+		                                     $user->getInfix()." ".
+		                                     $user->getSurname()."<br>";
+		               
+		               
+		$message .= "Wij hebben de onderstaande order van u ontvangen<br>";
+		$message .= "<table border='1'>
+		               <tr>
+		                   <td>order</td>
+		                   <td></td>
+		               </tr>
+		               <tr>
+		                   <td></td>
+		                   <td></td>
+		               </tr>
+		               </table>";
+		                                    
+		echo $message;exit();
+		
+		
+		mail($to, $subject, $message, $headers);
 		
 	}
 	

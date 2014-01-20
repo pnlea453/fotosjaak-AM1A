@@ -7,8 +7,9 @@
 
 body
 {
-    background-image:url("../images/blauw.jpg");
-	background-color:RGB(0, 0, 0);
+    /*background-image:url("../images/foto21.png");*/
+    background-repeat:no-repeat;
+	background-color:red;
 	font-size:1.1em;
 	font-family:Comic Sans MS;
 	border:0px solid blue;
@@ -24,7 +25,7 @@ body
 div#container
 {
 	background-color:blauw;
-	width:1000px;
+	width:495px;
 	margin:0px auto;
 	border-radius:0px;
 
@@ -32,9 +33,10 @@ div#container
 
 div#banner
 {
-	background-image:url("../images/logo.jpg");
+	background-image:url("../images/log.png");
+	background-repeat:no-repeat;
 	background-color:blue;
-	height:250px;
+	height:200px;
 	border-radius:40px;
 }
 
@@ -42,24 +44,24 @@ div#footer
 {
 	border-radius: 20px;
 	margin-top: 20px;
-	background-color:purple;
+	background-color:white;
 	text-align:center;
 }
 
 div#content
 {
-	background-color:white;
+	
 	border-radius:15px;
 	margin-top: 20px;
 	min-height:350px;
-	border:0px solid blue;
+	border:2px solid white;
 	padding:10px;
 	position:relative;
 }
 
 div#link
 {
-	border:2px solid purple;
+	border:2px solid white;
 	position:absolute;
 	left:-180px;
 	background-color:blauw;
