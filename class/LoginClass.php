@@ -234,7 +234,23 @@
 	   		
 	   	
 	   }
-       
+	   
+       public static function check_if_email_password_matches_md5($email, $password)
+		{
+			global $database;
+			$query = "SELECT * FROM `login` WHERE `email` = '".$email."' AND `password` = '".$password."'";
+			//echo $query; exit();
+			$result = $database ->fire_query($query);
+			if (mysql_num_rows($result) > 0 )
+			{
+				return true;
+		
+			}
+			else 
+			{
+				return false;
+			}
+		}
 }
 
 

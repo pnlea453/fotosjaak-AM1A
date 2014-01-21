@@ -54,7 +54,8 @@ class OrderClass
 		                               `deliverydate`,
 		                               `eventdate`,
 		                               `color`,
-		                               `number_of_pictures`)
+		                               `number_of_pictures`,
+		                               `confirmed`)
 		          VALUES               (null,
 		                                '".$_SESSION['id']."',
 		                                '".$post_array['order_short']."',
@@ -62,7 +63,8 @@ class OrderClass
 		                                '".$post_array['deliverydate']."',
 		                                '".$post_array['eventdate']."',
 		                                '".$post_array['color']."',
-		                                '".$post_array['number_of_pictures']."')";
+		                                '".$post_array['number_of_pictures']."',
+		                                'no')";
 		                                
 		 $database->fire_query($query);
 		 $order_id = mysql_insert_id();
@@ -115,11 +117,19 @@ class OrderClass
 		                   <td>Fotos worden genomen in</td>
 		                   <td>".$post_array['color']."</td>
 		               </tr>
+		               tr>
+		                   <td>Aantal foto's</td>
+		                   <td>".$post_array['number_of_pictures']."</td>
+		               </tr>
+		               tr>
+		                   <td>Opdracht bevestigd</td>
+		                   <td>nee</td>
+		               </tr>
 		               </table><br>";
 		   $message .= "Wanneer u op de onderstaande link klikt, gaat u<br>
 		                akkoord met de algemene voorwaarden en is de order<br>
 		                definitief.<br><br>";
-		   $message .= "<a href='http://localhost/Blok2/fotosjaak/index.php?content=confirm_order&email=".$login_info->get_email()."&password=".MD5($login_info->get_password())."'>opdracht is akkoord<a/><br><br>";
+		   $message .= "<a href='http://localhost/Blok2/fotosjaak/index.php?content=confirm_order&order_id=".$order_id."&email=".$login_info->get_email()."&password=".MD5($login_info->get_password())."'>opdracht is akkoord<a/><br><br>";
 		   $message .= "Met vriendelijke groet ,<br>
 		               <b> Sjaak de Vries</b><br><br>
 		                uw fotograaf";
