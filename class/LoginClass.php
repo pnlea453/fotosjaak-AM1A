@@ -239,7 +239,7 @@
 		{
 			global $database;
 			$query = "SELECT * FROM `login` WHERE `email` = '".$email."'";
-			$result = selff::find_by_sql($query);
+			$result = self::find_by_sql($query);
 			
 			$login_object = array_shift($result);
 			//check of de email bestaat
@@ -247,7 +247,7 @@
 			{
 			
 			//check of de md5 hash van het email uit de database overeen komt met de meegegeven md5 hash
-			if(strcomp($password, MD5($login_object->get_email())))
+			if(strcmp($password, MD5($login_object->get_password()))== 0)
 			{
 				return true;
 				
