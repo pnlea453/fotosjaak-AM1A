@@ -224,6 +224,13 @@
 	   		
 	   	
 	   }
+	   
+	   public static function find_email_password_by_id()
+	   {
+	   			
+	   		
+	   	
+	   }
        
 }
 

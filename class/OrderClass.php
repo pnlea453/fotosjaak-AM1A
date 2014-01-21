@@ -71,6 +71,7 @@ class OrderClass
 	private static function order_activation_email($order_id, $post_array)
 	{
 		$user = UserClass::find_firstname_infix_surname();
+		
 		$message = "Geachte heer/mevrouw : ".$user->getFirstname()." ".
 		                                     $user->getInfix()." ".
 		                                     $user->getSurname()."<br>";
@@ -103,6 +104,10 @@ class OrderClass
 		                   <td>".$post_array['color']."</td>
 		               </tr>
 		               </table>";
+		   $message .= "Wanneer u op de onderstaande link klikt, gaat u<br>
+		                akkoord met de algemene voorwaarden en is de order<br>
+		                definitief.<br><br>";
+		   $message .= "<a href='http://localhost/Blok2/fotosjaak/index.php?content=confirm_order'>opdracht is akkoord<a/>";
 		                                    
 		echo $message;exit();
 		
