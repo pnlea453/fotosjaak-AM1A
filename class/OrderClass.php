@@ -65,10 +65,10 @@ class OrderClass
 		                                
 		 $database->fire_query($query);
 		 $order_id = mysql_insert_id();
-		 self::order_activation_email();
+		 self::order_activation_email($order_id, $post_array);
 		
 	}
-	private static function order_activation_email()
+	private static function order_activation_email($order_id, $post_array)
 	{
 		$user = UserClass::find_firstname_infix_surname();
 		$message = "Geachte heer/mevrouw : ".$user->getFirstname()." ".
@@ -79,12 +79,28 @@ class OrderClass
 		$message .= "Wij hebben de onderstaande order van u ontvangen<br>";
 		$message .= "<table border='1'>
 		               <tr>
-		                   <td>order</td>
-		                   <td></td>
+		                   <td>order_id</td>
+		                   <td>".$order_id."</td>
 		               </tr>
 		               <tr>
-		                   <td></td>
-		                   <td></td>
+		                   <td>Opdracht in het kort</td>
+		                   <td>".$post_array['order_short']."</td>
+		               </tr>
+		               <tr>
+		                   <td>Opdracht uitgebereid</td>
+		                   <td>".$post_array['order_long']."</td>
+		               </tr>
+		               <tr>
+		                   <td>Opleveringsdatum</td>
+		                   <td>".$post_array['deliverydate']."</td>
+		               </tr>
+		               <tr>
+		                   <td>Datum event</td>
+		                   <td>".$post_array['eventdate']."</td>
+		               </tr>
+		               <tr>
+		                   <td>Fotos worden genomen in</td>
+		                   <td>".$post_array['color']."</td>
 		               </tr>
 		               </table>";
 		                                    
