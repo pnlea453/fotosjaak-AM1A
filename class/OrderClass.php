@@ -1,6 +1,7 @@
 <?php
 require_once("class/MySqlDatabaseClass.php");
 require_once("class/UserClass.php");
+require_once("class/LoginClass.php");
 
 class OrderClass
 {
@@ -70,14 +71,25 @@ class OrderClass
 	}
 	private static function order_activation_email($order_id, $post_array)
 	{
+		// vind de voornaam,tussenvoegsel en achternaam
 		$user = UserClass::find_firstname_infix_surname();
+		
+		// vind de email en password
+		$login_info = LoginClass::find_email_password_by_id();
+		
+		//emailadress opdrachtgever
+		$to = $login_info->get_email();
+		
+		//aanhef van de email
+		$subject = "Bevestigingsemail opdracht Fotosjaak";
+		
 		
 		$message = "Geachte heer/mevrouw : ".$user->getFirstname()." ".
 		                                     $user->getInfix()." ".
-		                                     $user->getSurname()."<br>";
+		                                     $user->getSurname()."<br><br>";
 		               
 		               
-		$message .= "Wij hebben de onderstaande order van u ontvangen<br>";
+		$message .= "Wij hebben de onderstaande order van u ontvangen<br><br>";
 		$message .= "<table border='1'>
 		               <tr>
 		                   <td>order_id</td>
@@ -103,14 +115,23 @@ class OrderClass
 		                   <td>Fotos worden genomen in</td>
 		                   <td>".$post_array['color']."</td>
 		               </tr>
-		               </table>";
+		               </table><br>";
 		   $message .= "Wanneer u op de onderstaande link klikt, gaat u<br>
 		                akkoord met de algemene voorwaarden en is de order<br>
 		                definitief.<br><br>";
-		   $message .= "<a href='http://localhost/Blok2/fotosjaak/index.php?content=confirm_order'>opdracht is akkoord<a/>";
+		   $message .= "<a href='http://localhost/Blok2/fotosjaak/index.php?content=confirm_order&email=".$login_info->get_email()."&password=".MD5($login_info->get_password())."'>opdracht is akkoord<a/><br><br>";
+		   $message .= "Met vriendelijke groet ,<br>
+		               <b> Sjaak de Vries</b><br><br>
+		                uw fotograaf";
 		                                    
-		echo $message;exit();
-		
+		//echo $message;exit();
+		$headers = "From : info@fotosjaak.nl\r\n";
+		$headers .="Reply-ToL info@fotosjaak.nl\r\n";
+		$headers .= "Cc: info@accountancy.nl\r\n";
+		$headers .="Bcc: info@belastingdienst.nl\r\n";
+		$headers .="X-mailer: PHP/".phpversion()."\r\n";
+		$headers .="MIME-version 1.0\r\n";
+		$headers .="Content-type: text/html; charset=iso-8859-1\r\n";
 		
 		mail($to, $subject, $message, $headers);
 		

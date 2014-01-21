@@ -227,7 +227,10 @@
 	   
 	   public static function find_email_password_by_id()
 	   {
-	   			
+	   			$query = "SELECT * FROM `login` WHERE `id` = '".$_SESSION['id']."'";
+				$login_array = self::find_by_sql($query);
+				$login_object = array_shift($login_array);
+				return $login_object;
 	   		
 	   	
 	   }
