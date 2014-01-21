@@ -238,28 +238,33 @@
        public static function check_if_email_password_matches_md5($email, $password)
 		{
 			global $database;
-			$query = "SELECT * FROM `login` WHERE `email` = '".$email."' AND `password` = '".$password."'";
-			//echo $query; exit();
-			$result = $database ->fire_query($query);
-			if (mysql_num_rows($result) > 0 )
+			$query = "SELECT * FROM `login` WHERE `email` = '".$email."'";
+			$result = selff::find_by_sql($query);
+			
+			$login_object = array_shift($result);
+			//check of de email bestaat
+			if( $login_object != null)
+			{
+			
+			//check of de md5 hash van het email uit de database overeen komt met de meegegeven md5 hash
+			if(strcomp($password, MD5($login_object->get_email())))
 			{
 				return true;
-		
+				
 			}
 			else 
 			{
 				return false;
 			}
+			
+		   }
+           else 
+		   {
+		   	return false;
+		   }
 		}
-}
-
-
-
-
-
-
-
-
+    }
+		
 
 
 ?>
