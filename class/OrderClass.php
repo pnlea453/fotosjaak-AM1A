@@ -146,7 +146,15 @@ class OrderClass
 		mail($to, $subject, $message, $headers);
 		
 	}
-	
+	 
+	 public static function update_confirmed($order_id)
+	 {
+	 		global $database;	
+	 		$query = "UPDATE `order` SET `confirmed` = 'yes'
+			WHERE order_id = '".$order_id."'";
+			$database->fire_query($query);
+	 	
+	 }
 	
 	
 }
