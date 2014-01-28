@@ -205,6 +205,29 @@
 				   $headers .="MIME-version: 1.0\r\n";
 				   $headers .="Content-type: text/html; charset=iso-8859-1\r\n";
 		           mail ($to, $subject, $message, $headers);
+		           
+	    $to = $post_array['email'];
+		$subject = "Activatie website FotoSjaak";
+		$message2 = "<p><u> Geachte heer/mevrouw <b> ".
+		           $post_array['firstname']." ".
+		           $post_array['infix']." ".
+		           $post_array['surname']."</\b></u></p>".
+		           "Nog bedankt voor het registeren.<br><br>
+		           
+		       
+		           Met vriendelijk groet,<br>
+		           Sjaak de Vries<br>
+		           Uw fotograaf";
+				   
+				   //echo $message; exit();
+				   $headers = "From: info@fotosjaak.nl\r\n";
+				   $headers .="Reply-To: info@fotosjaak.nl\r\n";
+				   $headers .="Cc: sjaak@fotosjaak.nl\r\n";
+				   $headers .="Bcc: admin@fotosjaak.nl\r\n";
+				   $headers .="X-mailer: PHP/".phpversion()."\r\n";
+				   $headers .="MIME-version: 1.0\r\n";
+				   $headers .="Content-type: text/html; charset=iso-8859-1\r\n";
+		           mail ($to, $subject, $message2, $headers);
 		
 	   }
        public static function update_password_in_login($email,$password)
