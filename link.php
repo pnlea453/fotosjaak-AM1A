@@ -49,6 +49,11 @@
 		</li>";
 	
 	break;
+	case 'coworker':
+		echo "<li> <a href='index.php?content=coworker'>pandabeer</a>
+		</li>";
+	
+	break;
 	}
 	}
     else 
