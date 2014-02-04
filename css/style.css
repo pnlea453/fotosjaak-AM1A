@@ -7,9 +7,9 @@
 
 body
 {
-    /*background-image:url("../images/foto21.png");*/
-    background-repeat:no-repeat;
-	background-color:red;
+    background-image:url("../images/im.jpg");
+    background-repeat:repeat;
+	//background-color:red;
 	font-size:1.1em;
 	font-family:Comic Sans MS;
 	border:0px solid blue;
@@ -50,7 +50,7 @@ div#footer
 
 div#content
 {
-	
+
 	border-radius:15px;
 	margin-top: 20px;
 	min-height:350px;

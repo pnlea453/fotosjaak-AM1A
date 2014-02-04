@@ -47,6 +47,8 @@
 	case 'photographer':
 		echo "<li> <a href='index.php?content=photographer_homepage'>photo-link</a>
 		</li>";
+		echo "<li> <a href='index.php?content=upload_homepage'>upload-link</a>
+		</li>";
 	
 	break;
 	case 'coworker':

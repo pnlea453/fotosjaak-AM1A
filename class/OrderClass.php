@@ -117,11 +117,11 @@ class OrderClass
 		                   <td>Fotos worden genomen in</td>
 		                   <td>".$post_array['color']."</td>
 		               </tr>
-		               tr>
+		               <tr>
 		                   <td>Aantal foto's</td>
 		                   <td>".$post_array['number_of_pictures']."</td>
 		               </tr>
-		               tr>
+		               <tr>
 		                   <td>Opdracht bevestigd</td>
 		                   <td>nee</td>
 		               </tr>
