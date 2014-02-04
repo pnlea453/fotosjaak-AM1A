@@ -13,6 +13,7 @@ require_once("class/OrderClass.php");
 <table border=1>
 
 <tr>
+   <th>userid</th>
    <th>ordernr</th>
    <th>opdracht</th>
    <th>datum</th>
