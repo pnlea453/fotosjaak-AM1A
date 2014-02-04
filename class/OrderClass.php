@@ -3,6 +3,7 @@ require_once("class/MySqlDatabaseClass.php");
 require_once("class/UserClass.php");
 require_once("class/LoginClass.php");
 
+
 class OrderClass
 {
 	//Fields
@@ -155,6 +156,29 @@ class OrderClass
 			$database->fire_query($query);
 	 	
 	 }
+	
+	public static function find_orders_users()
+	{
+		global $database;
+		//maak een query
+		$query = "SELECT * FROM `order`,`user` WHERE `order`.`user_id` = `user`.`id` ORDER BY `order`.`user_id`";
+		//Vuur de query af op de database
+		$result = $database->fire_query($query);
+		
+		while ($rows = mysql_fetch_array($result))
+		{
+				echo "<tr>
+				          <td>".$rows['order_id']."</td>
+				          <td>".$rows['order_short']."</td>
+				          <td>".$rows['deliverydate']."</td>
+				          
+				          <td><a href=''>up</a><td>
+				      </tr>";
+			
+		}
+	}
+	
+	
 	
 	
 }
