@@ -173,10 +173,13 @@ class OrderClass
 		{
 			echo "<tr>
 			        <td>".$rows['id']."</td>
+			        <td>".$rows['firstname']."</td>
+			        <td>".$rows['infix']."</td>
+			        <td>".$rows['surname']."</td>
 					<td>".$rows['order_id']."</td>
 					<td>".$rows['order_short']."</td>
 					<td>".$rows['deliverydate']."</td>
-					<td><a href=''>up</a></td>			
+					<td><a href='index.php?content=upload_form&user_id=".$rows['id']."&order_id=".$rows['order_id']."'>up</a></td>			
 				  </tr>";			
 		}
 

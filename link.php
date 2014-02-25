@@ -40,7 +40,7 @@
 	break;
 	
 	case 'developer':
-		echo "<li> <a href='index.php?content=developer_homepage'>dev-link</a>
+		echo "<li> <a href='index.php?content=selectors'>selectors</a>
 		</li>";
 	
 	break;

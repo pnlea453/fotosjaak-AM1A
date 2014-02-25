@@ -14,6 +14,9 @@ require_once("class/OrderClass.php");
 
 <tr>
    <th>userid</th>
+   <th>naam</th>
+   <th>tussenvoegsel</th>
+   <th>achternaam</th>
    <th>ordernr</th>
    <th>opdracht</th>
    <th>datum</th>
